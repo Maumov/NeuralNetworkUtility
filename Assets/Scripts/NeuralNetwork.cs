@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class NeuralNetwork : MonoBehaviour {
+public class NeuralNetwork : ScriptableObject {
 	public double LearnRate { get; set; }
 	public double Momentum { get; set; }
 	public List<Neuron> InputLayer;
@@ -44,31 +44,31 @@ public class NeuralNetwork : MonoBehaviour {
 		for (int i = 0; i < outputSize; i++){
 			OutputLayer.Add(CreateNeuronWithInputs(HiddenLayer[HiddenLayer.Count-1],"output " + i));
 		}
-		RepositionInputNeurons();
-		RepositionHiddenNeurons();
-		RepositionOutputNeurons();
+		//RepositionInputNeurons();
+		//RepositionHiddenNeurons();
+		//RepositionOutputNeurons();
 	}
-	void RepositionInputNeurons(){
-		for(int i = 0;i<InputLayer.Count;i++){
-			InputLayer[i].transform.position = new Vector3(0f,-(InputLayer.Count * 1.5f * 0.5f) + (i * 1.5f) ,0f);
-		}
-	}
-	void RepositionHiddenNeurons(){
-		for(int i = 0;i<HiddenLayer.Count;i++){
-			for(int j = 0; j< HiddenLayer[i].Count;j++){
-				HiddenLayer[i][j].transform.position = new Vector3(1.5f + (i * 1.5f),-(HiddenLayer[i].Count * 1.5f * 0.5f) + (j * 1.5f) ,0f);	
-			}
+	//void RepositionInputNeurons(){
+	//	for(int i = 0;i<InputLayer.Count;i++){
+	//		InputLayer[i].transform.position = new Vector3(0f,-(InputLayer.Count * 1.5f * 0.5f) + (i * 1.5f) ,0f);
+	//	}
+	//}
+	//void RepositionHiddenNeurons(){
+	//	for(int i = 0;i<HiddenLayer.Count;i++){
+	//		for(int j = 0; j< HiddenLayer[i].Count;j++){
+	//			HiddenLayer[i][j].transform.position = new Vector3(1.5f + (i * 1.5f),-(HiddenLayer[i].Count * 1.5f * 0.5f) + (j * 1.5f) ,0f);	
+	//		}
 
-		}
-	}
-	void RepositionOutputNeurons(){
-		for(int i = 0;i<OutputLayer.Count;i++){
-			OutputLayer[i].transform.position = new Vector3(1.5f + (HiddenLayer.Count * 1.5f) + (i * 1.5f) ,-(OutputLayer.Count * 1.5f * 0.5f) + (i * 1.5f) ,0f);
-		}
-	}
+	//	}
+	//}
+	//void RepositionOutputNeurons(){
+	//	for(int i = 0;i<OutputLayer.Count;i++){
+	//		OutputLayer[i].transform.position = new Vector3(1.5f + (HiddenLayer.Count * 1.5f) + (i * 1.5f) ,-(OutputLayer.Count * 1.5f * 0.5f) + (i * 1.5f) ,0f);
+	//	}
+	//}
 	Neuron CreateNeuron(string name){
 		GameObject g = (GameObject)Instantiate(NeuronPrefab);
-		g.transform.SetParent(transform);
+		//g.transform.SetParent(transform);
 		g.name = name;
 		return g.GetComponent<Neuron>();
 	}
@@ -85,7 +85,7 @@ public class NeuralNetwork : MonoBehaviour {
 	}
 	Synapse CreateSynapse(Neuron input,Neuron output){
 		GameObject g = (GameObject)Instantiate(SynapsePrefab);
-		g.transform.SetParent(transform);
+		//g.transform.SetParent(transform);
 		Synapse s = g.GetComponent<Synapse>();
 		s.Create(input,output);
 		return s;

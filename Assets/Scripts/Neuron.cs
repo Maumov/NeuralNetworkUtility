@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-public class Neuron : MonoBehaviour {
+public class Neuron : ScriptableObject {
 	
 	public List<Synapse> InputSynapses; 
 	public List<Synapse> OutputSynapses;

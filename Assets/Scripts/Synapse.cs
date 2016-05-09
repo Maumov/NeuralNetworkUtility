@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Synapse : MonoBehaviour {
+public class Synapse : ScriptableObject {
 
 	public Neuron InputNeuron; 
 	public Neuron OutputNeuron;
